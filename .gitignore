@@ -1,0 +1,22 @@
+# ---------- .NET ----------
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+.vs/
+
+# 编译产物放在 release/ 里, bin/obj 一律不入库
+*.deps.json
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---------- 本地配置 ----------
+.env
+*.local

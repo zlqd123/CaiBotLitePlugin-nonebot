@@ -1,0 +1,8 @@
+# 统一按 LF 存进仓库, 检出时由各平台的 core.autocrlf 决定
+* text=auto eol=lf
+
+# 二进制文件不做换行转换
+*.dll binary
+*.png binary
+*.jpg binary
+*.zip binary

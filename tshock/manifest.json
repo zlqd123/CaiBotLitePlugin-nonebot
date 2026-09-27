@@ -1,0 +1,15 @@
+{
+  "Dependencies": [
+    "linq2db",
+    "GenerateMap"
+  ],
+  "README.en-US": {
+    "Description": "CaiBotLite adapter plugin (CaiBot official bot or any OneBot v11 bot)"
+  },
+  "README.es-ES": {
+    "Description": "Plugin adaptador CaiBotLite (bot oficial de CaiBot o cualquier bot OneBot v11)"
+  },
+  "README": {
+    "Description": "CaiBotLite 适配插件(支持官方机器人与任意 OneBot v11 机器人)"
+  }
+}

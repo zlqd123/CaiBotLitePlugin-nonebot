@@ -1,0 +1,42 @@
+[project]
+name = "nonebot-plugin-caibotlite"
+version = "1.0.0"
+description = "CaiBotLite 的 NoneBot 侧适配插件, 让 OneBot v11 机器人为 Terraria 服务器提供进度/背包/排行/远程指令等功能"
+readme = "README.md"
+requires-python = ">=3.10"
+# 与本仓库其余部分保持一致: 整体以 GPL-3.0 发布
+license = { text = "GPL-3.0-or-later" }
+authors = [{ name = "CaiBotLite" }]
+keywords = ["nonebot", "onebot", "terraria", "tshock", "caibotlite"]
+classifiers = [
+    "Framework :: RobotFramework",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+]
+dependencies = [
+    "nonebot2>=2.3.0",
+    "nonebot-adapter-onebot>=2.3.0",
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "httpx>=0.24.0",
+    "websockets>=12.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/zlqd123/CaiBotLitePlugin-nonebot"
+Repository = "https://github.com/zlqd123/CaiBotLitePlugin-nonebot"
+
+[build-system]
+requires = ["nonebot2"]
+build-backend = "nonebot2.build"
+
+[tool.nonebot]
+plugins = ["nonebot_plugin_caibotlite"]
+package-dir = "src"
+
+[tool.nonebot.metadata]
+name = "CaiBotLite"
+desc = "CaiBotLite 的 NoneBot 侧适配插件"
+usage = |
+  在 .env 中配置 CAIBOTLITE__SECRET(与 TShock 端 OneBot.通讯密钥一致)后即可使用
+  群内发送 /泰拉 帮助 查看全部指令

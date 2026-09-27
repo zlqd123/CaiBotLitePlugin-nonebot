@@ -1,0 +1,222 @@
+[
+  {
+    "version": "2025.7.18",
+    "direction": "to_server",
+    "type": "player_list",
+    "is_request": true,
+    "request_id": "f80a8a4c56894e7da139d102f3645b1e",
+    "payload": {
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  },
+  {
+    "version": "2025.7.18",
+    "direction": "to_server",
+    "type": "progress",
+    "is_request": true,
+    "request_id": "80059b5c81df4ad8ada3b7dfda5d7967",
+    "payload": {
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  },
+  {
+    "version": "2025.7.18",
+    "direction": "to_server",
+    "type": "look_bag",
+    "is_request": true,
+    "request_id": "220773389ef546d5976f1d60f32ef3ff",
+    "payload": {
+      "player_name": "Steve",
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  },
+  {
+    "version": "2025.7.25",
+    "direction": "to_server",
+    "type": "rank_data",
+    "is_request": true,
+    "request_id": "be0ecfaaaf6b40cba91e22faace544cd",
+    "payload": {
+      "rank_type": "死亡",
+      "arg": "",
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  },
+  {
+    "version": "2025.7.25",
+    "direction": "to_server",
+    "type": "rank_data",
+    "is_request": true,
+    "request_id": "0b453cec29de4149ac1f401453325823",
+    "payload": {
+      "rank_type": "boss",
+      "arg": "史莱姆王",
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  },
+  {
+    "version": "2025.7.25",
+    "direction": "to_server",
+    "type": "plugin_list",
+    "is_request": true,
+    "request_id": "76a3869f06fc44a5a118cb1c65e570b9",
+    "payload": {
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  },
+  {
+    "version": "2025.7.18",
+    "direction": "to_server",
+    "type": "map_image",
+    "is_request": true,
+    "request_id": "d05ebe1e5a6d45c1a1ec3323aa4799e6",
+    "payload": {
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  },
+  {
+    "version": "2025.7.18",
+    "direction": "to_server",
+    "type": "map_file",
+    "is_request": true,
+    "request_id": "be50155a2218433b9d2cb5b0ebdcbdf8",
+    "payload": {
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  },
+  {
+    "version": "2025.7.18",
+    "direction": "to_server",
+    "type": "world_file",
+    "is_request": true,
+    "request_id": "3b0b81872c444e97b7f37ea76312631e",
+    "payload": {
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  },
+  {
+    "version": "2025.7.18",
+    "direction": "to_server",
+    "type": "call_command",
+    "is_request": true,
+    "request_id": "9cc32df5d7f2466d9baf6d4644759f18",
+    "payload": {
+      "command": "time night",
+      "user_open_id": "",
+      "group_open_id": "",
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  },
+  {
+    "version": "2025.7.18",
+    "direction": "to_server",
+    "type": "call_command",
+    "is_request": true,
+    "request_id": "fb8adb9565a142cfadcc962aa27ca950",
+    "payload": {
+      "command": "worldevent rain",
+      "user_open_id": "",
+      "group_open_id": "",
+      "__bridge": {
+        "self_id": 1,
+        "group_id": 123456,
+        "user_id": 999,
+        "message_id": 42,
+        "session": "",
+        "at_sender": false,
+        "nickname": "",
+        "is_admin": false
+      }
+    }
+  }
+]

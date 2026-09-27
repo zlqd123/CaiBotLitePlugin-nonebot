@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project=".\template.targets"/>
+
+    <ItemGroup>
+        <!-- linq2db 是唯一需要随插件一起部署的依赖(用于玩家数据查询) -->
+        <PackageReference Include="linq2db" Version="6.2.1"/>
+    </ItemGroup>
+
+    <!--
+      上游仓库里本项目还 ProjectReference 了 BossLock / Economics.* /
+      GenerateMap / ProgressControls, 用来在编译期引用它们的类型。
+      本仓库是独立精简版: 那些集成全部改成**运行期探测**
+      (见 Common/BossLockSupport.cs、MapGeneratorSupport.cs 等),
+      没装对应插件时自动降级, 因此不再需要编译期依赖 ——
+      也就不会把它们一起拖进 ServerPlugins 目录。
+    -->
+
+</Project>

@@ -193,6 +193,13 @@ public sealed class OneBotConnection : IBotConnection
 
     #region 主动连接(自动 / client 通道)
 
+    /// <summary>
+    /// 主动连接机器人失败时, 一条废弃的 TCP 连接要挂多久才算失败。
+    /// 目标端口被防火墙 DROP(而不是 RST)时, 不设上限的话系统默认要等一两分钟,
+    /// 这期间机器人自己连上来的那条链路会被下面的清理逻辑误杀。
+    /// </summary>
+    private const int ConnectTimeoutSeconds = 15;
+
     private async Task ConnectLoopAsync()
     {
         var interval = Math.Max(1, Config.Settings.OneBot.ReconnectSeconds);
@@ -200,6 +207,8 @@ public sealed class OneBotConnection : IBotConnection
 
         while (!_stopped)
         {
+            // 本轮自己发起的 socket。清理时只认它, 免得把监听接入的连接一起干掉
+            ClientWebSocket? client = null;
             try
             {
                 // 已经有链路连上了(比如机器人主动连过来的), 主动连接这条链路待命即可
@@ -218,14 +227,19 @@ public sealed class OneBotConnection : IBotConnection
                 }
 
                 var uri = BuildWebSocketUri(Config.Settings.OneBot.BotUrl);
-                var client = new ClientWebSocket();
+                client = new ClientWebSocket();
                 client.Options.KeepAliveInterval = TimeSpan.FromSeconds(30);
-                await client.ConnectAsync(uri, CancellationToken.None);
+                using (var cts = new CancellationTokenSource(
+                           TimeSpan.FromSeconds(ConnectTimeoutSeconds)))
+                {
+                    await client.ConnectAsync(uri, cts.Token);
+                }
 
                 if (!Attach(client, $"{uri.Scheme}://{uri.Host}:{uri.Port}"))
                 {
                     // 另一条链路先连上了, 这条让位
                     client.Dispose();
+                    client = null;
                     await Task.Delay(TimeSpan.FromSeconds(interval));
                     continue;
                 }
@@ -236,7 +250,12 @@ public sealed class OneBotConnection : IBotConnection
             catch (Exception e)
             {
                 failures++;
-                _status = "连接失败";
+                // 只在"当前确实没有可用连接"时才改状态, 别覆盖掉监听接入那条的状态
+                if (!IsConnected)
+                {
+                    _status = "连接失败";
+                }
+
                 // 对方不可达时不要刷屏
                 if (failures == 1 || failures % 20 == 0)
                 {
@@ -244,16 +263,22 @@ public sealed class OneBotConnection : IBotConnection
                 }
             }
 
-            try
+            // 只回收本轮自己发起的那条连接。
+            // 监听接入的连接(机器人主动连过来的)归 OnWebSocketConnected 管,
+            // 在这里清空 _webSocket 会把它一起杀掉, 机器人就会不停重连。
+            if (client is not null && ReferenceEquals(_webSocket, client))
             {
-                _webSocket?.Dispose();
-            }
-            catch
-            {
-                // 忽略
-            }
+                try
+                {
+                    _webSocket?.Dispose();
+                }
+                catch
+                {
+                    // 忽略
+                }
 
-            _webSocket = null;
+                _webSocket = null;
+            }
 
             if (_stopped)
             {

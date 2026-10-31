@@ -425,7 +425,7 @@ internal static class CaiBotApi
             return "OneBot";
         }
 
-        return string.IsNullOrEmpty(target.Nickname) ? target.UserId.ToString() : target.Nickname;
+        return string.IsNullOrEmpty(target.Nickname) ? target.UserId : target.Nickname;
     }
 
     /// <summary>
@@ -438,7 +438,7 @@ internal static class CaiBotApi
             return $"群\"{groupOpenId}\"";
         }
 
-        if (target is { GroupId: > 0 })
+        if (!string.IsNullOrEmpty(target.GroupId))
         {
             return $"群{target.GroupId}";
         }

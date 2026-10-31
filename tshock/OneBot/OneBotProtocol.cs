@@ -110,28 +110,28 @@ public sealed class OneBotEnvelope
 public sealed class OneBotTarget
 {
     /// <summary>
-    /// 发送这条消息的机器人账号
+    /// 发送这条消息的机器人账号(QQ 官方 Bot 下为纯数字 QQ 号字符串; 空串表示未知)
     /// </summary>
     [JsonProperty("self_id")]
-    public long SelfId { get; set; }
+    public string SelfId { get; set; } = "";
 
     /// <summary>
-    /// 目标群号, 0 表示不是群消息
+    /// 目标群标识, 空串表示不是群消息(QQ 官方 Bot 下为 group_openid)
     /// </summary>
     [JsonProperty("group_id")]
-    public long GroupId { get; set; }
+    public string GroupId { get; set; } = "";
 
     /// <summary>
-    /// 发送者 QQ 号
+    /// 发送者标识(QQ 官方 Bot 下为 user/member openid)
     /// </summary>
     [JsonProperty("user_id")]
-    public long UserId { get; set; }
+    public string UserId { get; set; } = "";
 
     /// <summary>
-    /// 被回复的那条消息, 用于"回复"而不是"另起一言"
+    /// 被回复的那条消息, 用于"回复"而不是"另起一言"(QQ 官方 Bot 下为字符串消息 ID)
     /// </summary>
     [JsonProperty("message_id")]
-    public long MessageId { get; set; }
+    public string MessageId { get; set; } = "";
 
     /// <summary>
     /// 会话标识, 机器人用它区分不同功能的会话(如商店会话)

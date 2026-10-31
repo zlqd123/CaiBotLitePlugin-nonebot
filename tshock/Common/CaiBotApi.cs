@@ -438,9 +438,9 @@ internal static class CaiBotApi
             return $"群\"{groupOpenId}\"";
         }
 
-        if (!string.IsNullOrEmpty(target.GroupId))
+        if (target is { } t && !string.IsNullOrEmpty(t.GroupId))
         {
-            return $"群{target.GroupId}";
+            return $"群{t.GroupId}";
         }
 
         return "私聊";
